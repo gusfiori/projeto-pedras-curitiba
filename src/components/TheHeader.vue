@@ -23,22 +23,31 @@ function toggleMenu() {
 
 function onNavClick(e, href) {
   e.preventDefault()
+
+  // Captura se o menu mobile estava aberto ANTES de fechar
+  const wasMenuOpen = menuOpen.value
   menuOpen.value = false
   activeSection.value = href.slice(1)
+
+  isClickScrolling = true
+  clearTimeout(clickScrollTimer)
+  clickScrollTimer = setTimeout(() => { isClickScrolling = false }, 1400)
+
+  if (href === '#inicio') {
+    window.scrollTo({ top: 0, behavior: 'smooth' })
+    return
+  }
 
   const target = document.querySelector(href)
   if (!target) return
 
-  const headerEl = document.querySelector('.header')
-  const offset = headerEl ? headerEl.offsetHeight : 140
+  // Se o menu mobile estava aberto, espera a animação de fechar (0.4s)
+  // antes de rolar — senão o header ainda está alto e o scroll erra
+  const delay = wasMenuOpen ? 420 : 0
 
-  const top = target.getBoundingClientRect().top + window.scrollY - offset - 10
-
-  isClickScrolling = true
-  clearTimeout(clickScrollTimer)
-  clickScrollTimer = setTimeout(() => { isClickScrolling = false }, 1000)
-
-  window.scrollTo({ top, behavior: 'smooth' })
+  setTimeout(() => {
+    target.scrollIntoView({ behavior: 'smooth', block: 'start' })
+  }, delay)
 }
 
 function handleScroll() {

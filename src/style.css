@@ -11,15 +11,18 @@
   box-sizing: border-box;
 }
 
-html {
-  scroll-behavior: smooth;
-}
-
 body {
   font-family: 'Raleway', sans-serif;
   background-color: var(--color-bg);
 }
 
+/* Offset para header fixo ao navegar por âncoras */
 section[id] {
-  scroll-margin-top: 148px;
+  scroll-margin-top: 80px; /* desktop: header scrolled (68px) + buffer */
+}
+
+@media (max-width: 768px) {
+  section[id] {
+    scroll-margin-top: 68px; /* mobile: header scrolled (60px) + buffer */
+  }
 }
