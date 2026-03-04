@@ -9,6 +9,7 @@ import { products } from '../data/products.js'
       <div class="products__header">
         <span class="products__label">Catálogo</span>
         <h2 class="products__title">Nossas Pedras</h2>
+        <button class="btn-ver-mais">Ver mais</button>
       </div>
 
       <div class="products__grid">
@@ -37,6 +38,10 @@ import { products } from '../data/products.js'
         </div>
       </div>
 
+      <div class="products__footer">
+        <button class="btn-ver-mais">Ver mais</button>
+      </div>
+
     </div>
   </section>
 </template>
@@ -52,7 +57,6 @@ import { products } from '../data/products.js'
   margin: 0 auto;
 }
 
-/* ── Cabeçalho ── */
 .products__header {
   text-align: center;
   margin-bottom: 3.5rem;
@@ -72,16 +76,41 @@ import { products } from '../data/products.js'
   font-size: clamp(1.6rem, 3vw, 2.2rem);
   font-weight: 700;
   color: #1C1C1C;
+  margin-bottom: 1.5rem;
 }
 
-/* ── Grid ── */
+.btn-ver-mais {
+  display: inline-block;
+  padding: 0.65rem 2rem;
+  font-family: 'Raleway', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #A88A5A;
+  background-color: transparent;
+  border: 2px solid #A88A5A;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+.btn-ver-mais:hover {
+  background-color: #A88A5A;
+  color: #fff;
+}
+
+.products__footer {
+  text-align: center;
+  margin-top: 3rem;
+}
+
 .products__grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 2rem;
 }
 
-/* ── Card ── */
 .card {
   background-color: #fff;
   border: 1px solid #EDE8DF;
@@ -164,7 +193,6 @@ import { products } from '../data/products.js'
   border-radius: 2px;
 }
 
-/* ── Mobile ── */
 @media (max-width: 768px) {
   .products__grid {
     grid-template-columns: repeat(2, 1fr);

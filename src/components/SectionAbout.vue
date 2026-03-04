@@ -6,14 +6,12 @@ import logo from '../assets/logo-pedras.png'
   <section id="quem-somos" class="about">
     <div class="about__container">
 
-      <!-- Coluna logo -->
       <div class="about__logo-col">
         <div class="about__logo-frame">
           <img :src="logo" alt="Pedras Boa Vista" class="about__logo-img" />
         </div>
       </div>
 
-      <!-- Coluna texto -->
       <div class="about__text">
         <span class="about__label">Quem Somos</span>
         <h2 class="about__title">Tradição e qualidade em pedras naturais</h2>
@@ -61,7 +59,6 @@ import logo from '../assets/logo-pedras.png'
   gap: 5rem;
 }
 
-/* ── Coluna logo ── */
 .about__logo-col {
   flex: 0 0 auto;
   display: flex;
@@ -86,7 +83,6 @@ import logo from '../assets/logo-pedras.png'
   object-fit: contain;
 }
 
-/* ── Coluna texto ── */
 .about__text {
   flex: 1;
 }

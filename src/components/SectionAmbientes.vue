@@ -20,10 +20,6 @@ function closeLightbox() {
   lightbox.value = null
   document.body.style.overflow = ''
 }
-
-function onKeydown(e) {
-  if (e.key === 'Escape') closeLightbox()
-}
 </script>
 
 <template>
@@ -31,7 +27,6 @@ function onKeydown(e) {
 
     <div class="ambientes__container">
 
-      <!-- Cabeçalho -->
       <div class="ambientes__header">
         <span class="ambientes__label">Nossos Trabalhos</span>
         <h2 class="ambientes__title">Ambientes que inspiram</h2>
@@ -40,7 +35,6 @@ function onKeydown(e) {
         </p>
       </div>
 
-      <!-- Filtros -->
       <div class="ambientes__filters">
         <button
           v-for="cat in categories"
@@ -53,7 +47,6 @@ function onKeydown(e) {
         </button>
       </div>
 
-      <!-- Mosaico -->
       <div class="gallery" :key="activeFilter">
         <div
           v-for="photo in filtered"
@@ -70,7 +63,6 @@ function onKeydown(e) {
 
     </div>
 
-    <!-- Lightbox -->
     <Transition name="lb">
       <div v-if="lightbox" class="lightbox" @click.self="closeLightbox" @keydown.window.esc="closeLightbox">
         <button class="lightbox__close" @click="closeLightbox" aria-label="Fechar">&#10005;</button>
@@ -93,7 +85,6 @@ function onKeydown(e) {
   margin: 0 auto;
 }
 
-/* ── Cabeçalho ── */
 .ambientes__header {
   text-align: center;
   margin-bottom: 2.5rem;
@@ -124,7 +115,6 @@ function onKeydown(e) {
   line-height: 1.7;
 }
 
-/* ── Filtros ── */
 .ambientes__filters {
   display: flex;
   flex-wrap: wrap;
@@ -159,7 +149,6 @@ function onKeydown(e) {
   color: #fff;
 }
 
-/* ── Mosaico ── */
 .gallery {
   columns: 3;
   column-gap: 1rem;
@@ -218,7 +207,6 @@ function onKeydown(e) {
   transform: scale(1);
 }
 
-/* ── Lightbox ── */
 .lightbox {
   position: fixed;
   inset: 0;
@@ -266,7 +254,6 @@ function onKeydown(e) {
   opacity: 1;
 }
 
-/* Lightbox transition */
 .lb-enter-active,
 .lb-leave-active {
   transition: opacity 0.3s ease;
@@ -276,7 +263,6 @@ function onKeydown(e) {
   opacity: 0;
 }
 
-/* ── Responsivo ── */
 @media (max-width: 900px) {
   .gallery { columns: 2; }
 }

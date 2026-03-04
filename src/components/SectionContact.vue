@@ -2,7 +2,6 @@
   <section id="contato" class="contact">
     <div class="contact__container">
 
-      <!-- Cabeçalho -->
       <div class="contact__header">
         <span class="contact__label">Fale Conosco</span>
         <h2 class="contact__title">Como nos encontrar</h2>
@@ -11,10 +10,8 @@
         </p>
       </div>
 
-      <!-- Conteúdo principal -->
       <div class="contact__body">
 
-        <!-- Informações -->
         <div class="contact__info">
 
           <div class="info__card">
@@ -79,7 +76,6 @@
 
         </div>
 
-        <!-- Mapa -->
         <div class="contact__map">
           <iframe
             title="Localização Pedras Boa Vista"
@@ -109,7 +105,6 @@
   margin: 0 auto;
 }
 
-/* ── Cabeçalho ── */
 .contact__header {
   text-align: center;
   margin-bottom: 3rem;
@@ -140,7 +135,6 @@
   line-height: 1.7;
 }
 
-/* ── Body ── */
 .contact__body {
   display: grid;
   grid-template-columns: 1fr 1.4fr;
@@ -148,7 +142,6 @@
   align-items: start;
 }
 
-/* ── Info cards ── */
 .contact__info {
   display: flex;
   flex-direction: column;
@@ -207,7 +200,6 @@
   opacity: 0.75;
 }
 
-/* ── Mapa ── */
 .contact__map {
   height: 460px;
   border-radius: 6px;
@@ -215,7 +207,6 @@
   box-shadow: 0 1px 6px rgba(0,0,0,0.08);
 }
 
-/* ── Responsivo ── */
 @media (max-width: 860px) {
   .contact__body {
     grid-template-columns: 1fr;

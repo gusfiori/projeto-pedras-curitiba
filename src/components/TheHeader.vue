@@ -24,7 +24,6 @@ function toggleMenu() {
 function onNavClick(e, href) {
   e.preventDefault()
 
-  // Captura se o menu mobile estava aberto ANTES de fechar
   const wasMenuOpen = menuOpen.value
   menuOpen.value = false
   activeSection.value = href.slice(1)
@@ -41,8 +40,6 @@ function onNavClick(e, href) {
   const target = document.querySelector(href)
   if (!target) return
 
-  // Se o menu mobile estava aberto, espera a animação de fechar (0.4s)
-  // antes de rolar — senão o header ainda está alto e o scroll erra
   const delay = wasMenuOpen ? 420 : 0
 
   setTimeout(() => {
@@ -87,9 +84,7 @@ onUnmounted(() => {
 <template>
   <header class="header" :class="{ scrolled }">
 
-    <!-- Faixa superior: contato rápido -->
     <div class="header__topbar">
-      <!-- Esquerda: números de contato -->
       <div class="topbar__contacts">
         <span class="topbar__item">
           <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="white">
@@ -105,7 +100,6 @@ onUnmounted(() => {
           (41) 3256-7078
         </span>
       </div>
-      <!-- Direita: redes sociais -->
       <div class="topbar__social">
         <a href="#" class="topbar__social-link" aria-label="Facebook">
           <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="white">
@@ -127,7 +121,6 @@ onUnmounted(() => {
         <img :src="logo" alt="Pedras Boa Vista" class="header__logo-img" />
       </a>
 
-      <!-- Nav desktop -->
       <nav class="header__nav">
         <ul>
           <li v-for="link in navLinks" :key="link.href">
@@ -140,7 +133,6 @@ onUnmounted(() => {
         </ul>
       </nav>
 
-      <!-- Botão hamburguer (mobile) -->
       <button class="header__hamburger" :class="{ open: menuOpen }" @click="toggleMenu" aria-label="Abrir menu">
         <span></span>
         <span></span>
@@ -148,7 +140,6 @@ onUnmounted(() => {
       </button>
     </div>
 
-    <!-- Menu mobile -->
     <nav class="header__mobile-nav" :class="{ open: menuOpen }">
       <ul>
         <li v-for="link in navLinks" :key="link.href">
@@ -180,7 +171,6 @@ onUnmounted(() => {
   box-shadow: 0 2px 20px rgba(0, 0, 0, 0.10);
 }
 
-/* ── Topbar ── */
 .header__topbar {
   width: 100%;
   background-color: #A88A5A;
@@ -235,7 +225,6 @@ onUnmounted(() => {
   letter-spacing: 0.5px;
 }
 
-/* ── Header principal ── */
 .header__container {
   max-width: 1200px;
   margin: 0 auto;
@@ -269,7 +258,6 @@ onUnmounted(() => {
   height: 58px;
 }
 
-/* ── Nav desktop ── */
 .header__nav ul {
   list-style: none;
   display: flex;
@@ -300,7 +288,6 @@ onUnmounted(() => {
   border-bottom-color: #A88A5A;
 }
 
-/* ── Hamburguer ── */
 .header__hamburger {
   display: none;
   flex-direction: column;
@@ -336,7 +323,6 @@ onUnmounted(() => {
   transform: translateY(-7px) rotate(-45deg);
 }
 
-/* ── Menu mobile ── */
 .header__mobile-nav {
   display: none;
   background-color: #F5EDD8;
@@ -386,7 +372,6 @@ onUnmounted(() => {
   color: #A88A5A;
 }
 
-/* ── Responsivo ── */
 @media (max-width: 768px) {
   .header__nav {
     display: none;

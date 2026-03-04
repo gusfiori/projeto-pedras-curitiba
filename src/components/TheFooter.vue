@@ -14,7 +14,6 @@ const navLinks = [
   <footer class="footer">
     <div class="footer__container">
 
-      <!-- Coluna 1: Logo + descrição + redes sociais -->
       <div class="footer__col footer__col--brand">
         <a href="#inicio" class="footer__logo-link">
           <img :src="logo" alt="Pedras Boa Vista" class="footer__logo" />
@@ -44,7 +43,6 @@ const navLinks = [
         </div>
       </div>
 
-      <!-- Coluna 2: Navegação -->
       <div class="footer__col">
         <h4 class="footer__heading">Navegação</h4>
         <ul class="footer__nav">
@@ -54,7 +52,6 @@ const navLinks = [
         </ul>
       </div>
 
-      <!-- Coluna 3: Contato + Localização -->
       <div class="footer__col">
         <h4 class="footer__heading">Contato</h4>
         <ul class="footer__info">
@@ -84,12 +81,11 @@ const navLinks = [
         </ul>
       </div>
 
-      <!-- Coluna 4: Pagamento -->
       <div class="footer__col">
         <h4 class="footer__heading">Formas de Pagamento</h4>
         <div class="footer__payment">
 
-          <!-- Visa -->
+
           <div class="payment__card">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 32" width="48" height="32">
               <rect width="48" height="32" rx="4" fill="#1A1F71"/>
@@ -97,7 +93,7 @@ const navLinks = [
             </svg>
           </div>
 
-          <!-- Mastercard -->
+
           <div class="payment__card">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 32" width="48" height="32">
               <rect width="48" height="32" rx="4" fill="#252525"/>
@@ -107,7 +103,7 @@ const navLinks = [
             </svg>
           </div>
 
-          <!-- Hipercard -->
+
           <div class="payment__card">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 32" width="48" height="32">
               <rect width="48" height="32" rx="4" fill="#822124"/>
@@ -123,7 +119,6 @@ const navLinks = [
 
     </div>
 
-    <!-- Linha inferior -->
     <div class="footer__bottom">
       <p>© {{ new Date().getFullYear() }} Pedras Boa Vista. Todos os direitos reservados.</p>
     </div>
@@ -146,7 +141,6 @@ const navLinks = [
   gap: 3rem;
 }
 
-/* ── Colunas ── */
 .footer__col--brand {
   display: flex;
   flex-direction: column;
@@ -170,7 +164,6 @@ const navLinks = [
   max-width: 260px;
 }
 
-/* ── Social ── */
 .footer__social {
   display: flex;
   gap: 0.75rem;
@@ -199,7 +192,6 @@ const navLinks = [
   color: #fff;
 }
 
-/* ── Heading ── */
 .footer__heading {
   font-size: 0.72rem;
   font-weight: 700;
@@ -209,7 +201,6 @@ const navLinks = [
   margin-bottom: 1.25rem;
 }
 
-/* ── Nav ── */
 .footer__nav {
   list-style: none;
   display: flex;
@@ -228,7 +219,6 @@ const navLinks = [
   color: #C9A96E;
 }
 
-/* ── Info ── */
 .footer__info {
   list-style: none;
   display: flex;
@@ -252,7 +242,6 @@ const navLinks = [
   color: #C9A96E;
 }
 
-/* ── Payment ── */
 .footer__payment {
   display: flex;
   flex-wrap: wrap;
@@ -270,7 +259,6 @@ const navLinks = [
   opacity: 1;
 }
 
-/* ── Bottom ── */
 .footer__bottom {
   border-top: 1px solid rgba(255,255,255,0.07);
   text-align: center;
@@ -279,7 +267,6 @@ const navLinks = [
   color: rgba(255,255,255,0.3);
 }
 
-/* ── Responsivo ── */
 @media (max-width: 1000px) {
   .footer__container {
     grid-template-columns: 1fr 1fr;
