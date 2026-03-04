@@ -12,12 +12,18 @@ const navLinks = [
 
 const activeSection = ref('inicio')
 const scrolled = ref(false)
+const menuOpen = ref(false)
 
 let isClickScrolling = false
 let clickScrollTimer = null
 
+function toggleMenu() {
+  menuOpen.value = !menuOpen.value
+}
+
 function onNavClick(e, href) {
   e.preventDefault()
+  menuOpen.value = false
   activeSection.value = href.slice(1)
 
   const target = document.querySelector(href)
@@ -111,6 +117,8 @@ onUnmounted(() => {
       <a href="#inicio" class="header__logo">
         <img :src="logo" alt="Pedras Boa Vista" class="header__logo-img" />
       </a>
+
+      <!-- Nav desktop -->
       <nav class="header__nav">
         <ul>
           <li v-for="link in navLinks" :key="link.href">
@@ -122,7 +130,28 @@ onUnmounted(() => {
           </li>
         </ul>
       </nav>
+
+      <!-- Botão hamburguer (mobile) -->
+      <button class="header__hamburger" :class="{ open: menuOpen }" @click="toggleMenu" aria-label="Abrir menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
     </div>
+
+    <!-- Menu mobile -->
+    <nav class="header__mobile-nav" :class="{ open: menuOpen }">
+      <ul>
+        <li v-for="link in navLinks" :key="link.href">
+          <a
+            :href="link.href"
+            :class="{ active: activeSection === link.href.slice(1) }"
+            @click="onNavClick($event, link.href)"
+          >{{ link.label }}</a>
+        </li>
+      </ul>
+    </nav>
+
   </header>
 </template>
 
@@ -231,6 +260,7 @@ onUnmounted(() => {
   height: 58px;
 }
 
+/* ── Nav desktop ── */
 .header__nav ul {
   list-style: none;
   display: flex;
@@ -247,7 +277,6 @@ onUnmounted(() => {
   font-weight: 600;
   letter-spacing: 2px;
   text-transform: uppercase;
-  transition: color 0.2s;
   padding-bottom: 4px;
   border-bottom: 2px solid transparent;
   transition: color 0.2s, border-color 0.2s;
@@ -262,9 +291,139 @@ onUnmounted(() => {
   border-bottom-color: #A88A5A;
 }
 
-@media (max-width: 600px) {
-  .header__topbar { padding: 0.35rem 1rem; }
-  .header__nav ul { gap: 1.25rem; }
-  .header__logo-img { height: 52px; }
+/* ── Hamburguer ── */
+.header__hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 6px;
+  width: 40px;
+  height: 40px;
+}
+
+.header__hamburger span {
+  display: block;
+  width: 26px;
+  height: 2px;
+  background-color: #5a4a30;
+  border-radius: 2px;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  transform-origin: center;
+}
+
+.header__hamburger.open span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+.header__hamburger.open span:nth-child(2) {
+  opacity: 0;
+  transform: scaleX(0);
+}
+.header__hamburger.open span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+/* ── Menu mobile ── */
+.header__mobile-nav {
+  display: none;
+  background-color: #F5EDD8;
+  overflow: hidden;
+  max-height: 0;
+  transition: max-height 0.4s ease, padding 0.3s ease;
+  padding: 0 2rem;
+}
+
+.header__mobile-nav.open {
+  max-height: 400px;
+  padding: 1rem 2rem 1.5rem;
+}
+
+.header__mobile-nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.header__mobile-nav li {
+  border-bottom: 1px solid rgba(168, 138, 90, 0.2);
+}
+
+.header__mobile-nav li:last-child {
+  border-bottom: none;
+}
+
+.header__mobile-nav a {
+  display: block;
+  padding: 0.85rem 0;
+  text-decoration: none;
+  color: gray;
+  font-family: 'Raleway', sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  transition: color 0.2s;
+}
+
+.header__mobile-nav a:hover,
+.header__mobile-nav a.active {
+  color: #A88A5A;
+}
+
+/* ── Responsivo ── */
+@media (max-width: 768px) {
+  .header__nav {
+    display: none;
+  }
+
+  .header__hamburger {
+    display: flex;
+  }
+
+  .header__mobile-nav {
+    display: block;
+  }
+
+  .header__container {
+    height: 72px;
+    padding: 0 1.25rem;
+  }
+
+  .scrolled .header__container {
+    height: 60px;
+  }
+
+  .header__logo-img {
+    height: 58px;
+  }
+
+  .scrolled .header__logo-img {
+    height: 48px;
+  }
+
+  .header__topbar {
+    padding: 0.4rem 1.25rem;
+  }
+
+  .topbar__item {
+    font-size: 0.8rem;
+  }
+
+  .topbar__contacts {
+    gap: 0.75rem;
+  }
+}
+
+@media (max-width: 400px) {
+  .topbar__contacts .topbar__item:last-child {
+    display: none;
+  }
 }
 </style>

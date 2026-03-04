@@ -28,4 +28,10 @@ import TheFooter from './components/TheFooter.vue'
 .main {
   padding-top: 148px;
 }
+
+@media (max-width: 768px) {
+  .main {
+    padding-top: 112px;
+  }
+}
 </style>
