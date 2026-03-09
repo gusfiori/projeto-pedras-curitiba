@@ -17,11 +17,11 @@ import logo from '../assets/logo-pedras.png'
         <h2 class="about__title">Tradição e qualidade em pedras naturais</h2>
         <p class="about__description">
           A Pedras Boa Vista nasceu da paixão por transformar ambientes com a beleza única das pedras naturais.
-          Há anos no mercado de mármores, granitos e quartzos, oferecemos aos nossos clientes materiais de
+          Há anos no mercado, oferecemos aos nossos clientes materiais de
           alto padrão aliados a um atendimento personalizado e comprometido com cada detalhe do projeto.
         </p>
         <p class="about__description">
-          Trabalhamos com as melhores pedreiras do Brasil e do mundo, garantindo exclusividade,
+          Trabalhamos com as melhores pedreiras do Brasil, garantindo exclusividade,
           durabilidade e o acabamento perfeito que o seu espaço merece. Do planejamento à instalação,
           estamos presentes em cada etapa.
         </p>

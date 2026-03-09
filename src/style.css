@@ -17,11 +17,11 @@ body {
 }
 
 section[id] {
-  scroll-margin-top: 80px; /* desktop: header scrolled (68px) + buffer */
+  scroll-margin-top: 80px; 
 }
 
 @media (max-width: 768px) {
   section[id] {
-    scroll-margin-top: 68px; /* mobile: header scrolled (60px) + buffer */
+    scroll-margin-top: 68px; 
   }
 }
