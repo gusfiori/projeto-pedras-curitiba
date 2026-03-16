@@ -9,8 +9,9 @@ import img5 from '../assets/carousel/carrossel5.jpg'
 import img6 from '../assets/carousel/carrossel6.jpg'
 import img7 from '../assets/carousel/carrossel7.jpg'
 import img8 from '../assets/carousel/carrossel8.jpg'
+import img9 from '../assets/carousel/carrossel9.jpg'
 
-const images = [img1, img2, img3, img4, img5, img6, img7, img8]
+const images = [img1, img2, img3, img4, img5, img6, img7, img8, img9]
 
 const current = ref(0)
 let autoplay = null
