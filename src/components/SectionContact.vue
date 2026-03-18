@@ -1,3 +1,34 @@
+<script setup>
+const googleReviews = [
+  {
+    id: 1,
+    name: 'Liziane Vieira',
+    time: '2 anos atrás',
+    rating: 5,
+    text: 'Atendimento espetacular! Grande variedade de produtos, preço bom, entrega foi no prazo combinado e a colocação foi impecável. Superou minhas expectativas. Recomendo.',
+  },
+  {
+    id: 2,
+    name: 'Luiz Henrique Ruffino',
+    time: '4 anos atrás',
+    rating: 5,
+    text: 'O compromisso da empresa para com o cliente foi muito satisfatório. Adquirimos Pedras Ferro e estávamos preocupados com a qualidade das pedras bem como com o serviço de colocação. Tudo ficou perfeito.',
+  },
+  {
+    id: 3,
+    name: 'Sybelle Sybelle',
+    rating: 5,
+    time: '4 anos atrás',
+    text: 'Ótimo serviço! Entregas feitas sempre no prazo estabelecido, a colocação das pedras é perfeita e os valores são acessíveis!',
+  },
+]
+
+function renderStars(rating) {
+  const safeRating = Math.max(0, Math.min(5, Number(rating) || 0))
+  return '★'.repeat(safeRating) + '☆'.repeat(5 - safeRating)
+}
+</script>
+
 <template>
   <section id="contato" class="contact">
     <div class="contact__container">
@@ -90,6 +121,36 @@
         </div>
 
       </div>
+
+      <div class="reviews">
+        <div class="reviews__header">
+          <span class="reviews__label">Depoimentos</span>
+          <h3 class="reviews__title">Avaliações no Google</h3>
+        </div>
+
+        <div class="reviews__grid">
+          <article
+            v-for="review in googleReviews"
+            :key="review.id"
+            class="review-card"
+          >
+            <div class="review-card__top">
+              <strong class="review-card__name">{{ review.name }}</strong>
+              <span class="review-card__time">{{ review.time }}</span>
+            </div>
+            <div class="review-card__stars" :aria-label="`${review.rating} estrelas`">{{ renderStars(review.rating) }}</div>
+            <p class="review-card__text">{{ review.text }}</p>
+          </article>
+        </div>
+
+        <a
+          href="https://www.google.com/search?q=Pedras+Boa+Vista+Curitiba+avaliacoes"
+          target="_blank"
+          rel="noopener"
+          class="reviews__link"
+        >Ver mais avaliações no Google</a>
+      </div>
+
     </div>
   </section>
 </template>
@@ -207,6 +268,89 @@
   box-shadow: 0 1px 6px rgba(0,0,0,0.08);
 }
 
+.reviews {
+  margin-top: 2.5rem;
+}
+
+.reviews__header {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.reviews__label {
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: #A88A5A;
+  margin-bottom: 0.5rem;
+}
+
+.reviews__title {
+  font-size: clamp(1.2rem, 2.4vw, 1.7rem);
+  color: #2c2c2c;
+}
+
+.reviews__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}
+
+.review-card {
+  background: #fff;
+  border: 1px solid #ece5d8;
+  border-radius: 8px;
+  padding: 1rem 1.1rem;
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.04);
+}
+
+.review-card__top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  margin-bottom: 0.35rem;
+}
+
+.review-card__name {
+  font-size: 0.88rem;
+  color: #2c2c2c;
+}
+
+.review-card__time {
+  font-size: 0.75rem;
+  color: #8a8a8a;
+}
+
+.review-card__stars {
+  color: #fbbc04;
+  letter-spacing: 1px;
+  margin-bottom: 0.55rem;
+  font-size: 0.9rem;
+}
+
+.review-card__text {
+  color: #5c5c5c;
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
+.reviews__link {
+  display: inline-block;
+  margin-top: 1.25rem;
+  color: #A88A5A;
+  font-weight: 700;
+  text-decoration: none;
+  border-bottom: 1px solid #A88A5A;
+  padding-bottom: 2px;
+}
+
+.reviews__link:hover {
+  opacity: 0.8;
+}
+
 @media (max-width: 860px) {
   .contact__body {
     grid-template-columns: 1fr;
@@ -214,6 +358,10 @@
 
   .contact__map {
     height: 320px;
+  }
+
+  .reviews__grid {
+    grid-template-columns: 1fr;
   }
 }
 
