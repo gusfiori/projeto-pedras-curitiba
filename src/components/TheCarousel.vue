@@ -53,7 +53,6 @@ onUnmounted(() => {
     <div class="hero__overlay" />
 
     <div class="hero__content">
-      <p class="hero__subtitle">Mármores &amp; Granitos</p>
       <h1 class="hero__title">Beleza natural que<br />transforma ambientes</h1>
       <a href="#produtos" class="hero__cta">Ver Catálogo</a>
     </div>
